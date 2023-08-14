@@ -37,7 +37,14 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '16.x'
+
+      # Customize Showdown instance so any user can run tours
+      - name: Customize Showdown
+        working-directory: /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown/server
+        run: |
+          sed -i 's/hasSysopAccess() {/hasSysopAccess() { return true;/' users.ts
+          cat users.ts
 
       # Run Showdown
       - name: Run Showdown
