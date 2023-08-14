@@ -33,6 +33,17 @@ jobs:
           repository: smogon/pokemon-showdown
           path: pokemon-showdown
 
+      # Set up Node
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      # Run Showdown
+      - name: Run Showdown
+        run: node pokemon-showdown 8000
+        working-directory: /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
