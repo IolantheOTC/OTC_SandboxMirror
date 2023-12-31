@@ -24,27 +24,36 @@ Please write the names of formats and bans of Pokemon, items, etc with proper sp
 
 Although lower-case parameters without alphanumeric characters ("IDs") are recognised by the tour code parser, the formatting used in tour codes is mostly preserved when it is shown to users in the "This tournament includes:" boxout. If the rules are formatted correctly, they will be easier for users to read, and maintain a sense of consistency and familiarity with how built-in format descriptions are displayed with the !tier/!om command.
 
+The preferred order of operations is:
+1. Addition of rules: Standard OMs, Ability Clause = 2, Alphabet Cup Move Legality, etc.
+2. Removal of rules: !Obtainable Abilities, !Obtainable Moves, etc.
+3. Bans: -Landorus-Base, -Sword of Ruin, -King's Rock, -Acupressure, etc.
+4. Unbans: +Keldeo, +Fur Coat, +Pidgeotite, +Gigaton Hammer, etc.
+5. Restrictions: \*Dragonite, \*Belly Drum, etc.
+
+Every rule addition with \+\-\* should additionally be ordered with broad changes (ex. +CAP), [pokemon, abilities, items, moves](https://github.com/smogon/pokemon-showdown/pull/9427#issuecomment-1449031093) and sorted alphabetically within type.
+ 
   
 
-Good example:-
+Good example:
 
   
 
 > This tournament includes:
-> 
+>   
 > Added bans - Comatose, Contrary, Fluffy, Fur Coat, Gorilla Tactics,
 > Huge Power, Ice Scales, Illusion, Imposter, Innards Out, Intrepid
 > Sword, Libero, Neutralizing Gas, Parental Bond, Protean, Pure Power,
-> Simple, Stakeout, Speed Boost, Water Bubble, Wonder Guard, Shedinja,
-> Hypnosis, Sing, Sleep Powder, Keldeo, Terrakion, Zeraora, Chandelure,
-> Melmetal, Electrify, Volcarona, Blacephalon, Tapu Koko, Thundurus,
-> Archeops, Zygarde, Regigigas, Tinted Lens, Urshifu, Latios
+> Simple, Stakeout, Speed Boost, Tinted Lens, Water Bubble, Wonder Guard, 
+> Electrify, Hypnosis, Sing, Sleep Powder, Archeops, Blacephalon, Chandelure, 
+> Keldeo, Latios, Melmetal, Regigigas, Shedinja, Tapu Koko, Terrakion,
+> Thundurus, Urshifu, Zeraora, Zygarde, Volcarona
 > 
 > Removed bans - Darmanitan, Darmanitan-Galar, Dracovish, Gengar,
-> Porygon-Z, Zygarde-10%, Landorus-Base, Mamoswine, Urshifu-Rapid-Strike
+> Landorus-Base, Mamoswine, Porygon-Z,Urshifu-Rapid-Strike, Zygarde-10%
 > 
-> Added restrictions - Transform, No Retreat, Glacial Lance, Oblivion
-> Wing
+> Added restrictions -  Glacial Lance, No Retreat, Oblivion
+> Wing, Transform
 > 
 > Added rules - Ability Clause = 2
 > 
@@ -52,15 +61,14 @@ Good example:-
 
   
 
-Bad example:-
-
+Bad example:
   
 
 > This tournament includes:
 > 
-> Added bans - ZYDOG
+> Added bans - ELECTRIFY, ZYDOG, Belly drum
 > 
-> Removed bans - landot
+> Removed bans - landot, thundurus
 > 
 > Added rules - g e n 8 c a m O m O n s
 

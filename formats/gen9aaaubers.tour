@@ -1,4 +1,4 @@
-/tour new [Gen 9] Ubers, Elimination,,,[Gen 9] Almost Any Ability Ubers
-/tour rules !Obtainable Abilities, Ability Clause = 1, Terastal Clause, -Arena Trap, -Comatose, -Contrary, -Gorilla Tactics, -Huge Power, -Illusion, -Imposter, -Moody, -Neutralizing Gas, -Parental Bond, -Pure Power, -Shadow Tag, -Simple, -Stakeout, -Speed Boost, -Water Bubble, -Wonder Guard, +Calyrex-Shadow
-/tour autostart 10
-/tour autodq 7
+/tour new [Gen 9] Anything Goes, Elimination,,,[Gen 9] AAA Ubers
+/tour rules Standard OMs, Sleep Moves Clause, !Obtainable Abilities, Ability Clause = 1, Terastal Clause, -Arena Trap, -Comatose, -Contrary, -Gorilla Tactics, -Huge Power, -Illusion, -Imposter,  -Innards Out, -Moody, -Neutralizing Gas, -Parental Bond, -Pure Power, -Shadow Tag, -Simple, -Stakeout, -Speed Boost, -Water Bubble, -Wonder Guard, -Calyrex-Shadow, -Baton Pass 
+/tour autostart 7
+/tour autodq 4

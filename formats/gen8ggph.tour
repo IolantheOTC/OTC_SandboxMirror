@@ -1,4 +1,4 @@
-/tour new [Gen 8] Custom Game, Elimination,,,[Gen 8] Godly Gift Pure Hackmons
-/tour rules !! Max Team Size = 6, !! Max Move Count = 4, !! Max Level = 100, HP Percentage Mod, Endless Battle Clause, Godly Gift Mod, -Nonexistent
+/tour new [Gen 8] Anything Goes, Elimination,,,[Gen 8] Godly Gift Pure Hackmons
+/tour rules Godly Gift Mod, !Obtainable, -Future, -Past, -LGPE, -CAP, -Custom
 /tour autostart 10
 /tour autodq 6

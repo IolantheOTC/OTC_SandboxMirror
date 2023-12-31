@@ -1,6 +1,5 @@
 gen9stabmnm: stabnmega, stabandmega, snm
 gen8ndlg: ndsuicidecup, ndsc
-gen8spaaa: shaaaredpower, sharedpoweraaa, shaaared
 gen8pokeaaa: pokeaaabilities
 gen8stabgg: godslayer
 gen8randbtassuddendeath: randbtassd, randbtasfirstblood
@@ -22,3 +21,8 @@ gen9mnmconverge: convergeandmega
 gen9csflippedaaa: reversegame
 gen9pokeaaa: pokebilitiesaaa
 gen9ndpokeconverge: ndpc, gen9nationaldexpokeconverge,gen9nationadexconvergencepokebilities
+gen9camoconverge: camovergence
+gen9spaaa: shaaaredpower, sharedpoweraaa, shaaared
+gen9cappokeaaa: capokeaaa
+gen9abcuu: abcuup
+gen9inhcup: inherimonscup
