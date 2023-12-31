@@ -46,10 +46,25 @@ jobs:
           sed -i 's/hasSysopAccess() {/hasSysopAccess() { return true;/' users.ts
           cat users.ts
 
-      # Run Showdown
-      - name: Run Showdown
-        run: node pokemon-showdown 8000
+      # Inject custom battle test into showdown
+      - name: Create Showdown Custom Tests
+        run: |
+          echo Creating custom tests...
+          cp $GITHUB_WORKSPACE/test/operationtourcode.js /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown/test/sim/misc/operationtourcode.js
+          echo Finished creating custom tests
+
+      # run: sh ./test/create-custom-tests.sh
+      # working-directory: /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown
+
+      # Execute custom battle test
+      - name: Custom Battle Test
+        run: npx mocha -g "OperationTourCode"
         working-directory: /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown
+
+      # Run Showdown
+      #- name: Run Showdown
+      #  run: node pokemon-showdown 8000
+      #  working-directory: /home/runner/work/#OTC_SandboxMirror/OTC_SandboxMirror/#pokemon-showdown
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
