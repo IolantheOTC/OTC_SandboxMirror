@@ -39,10 +39,6 @@ jobs:
         with:
           node-version: '16.x'
 
-      # Install mocha
-      - name: Install mocha
-        run: npm install -g mocha@10.2.0
-
       # Generate custom battle tests for Showdown 
       - name: Generate Showdown Custom Tests
         run: node $GITHUB_WORKSPACE/test/create-custom-tests.js
@@ -54,6 +50,10 @@ jobs:
           echo Injecting custom tests...
           cp $GITHUB_WORKSPACE/test/operationtourcode.js /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown/test/sim/misc/operationtourcode.js
           echo Finished injecting custom tests
+
+      # Install mocha
+      - name: Install mocha
+        run: npm install -g mocha@10.2.0
 
       # Execute custom battle tests
       - name: Run Showdown Custom Tests
