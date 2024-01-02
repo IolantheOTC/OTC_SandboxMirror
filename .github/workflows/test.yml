@@ -34,10 +34,14 @@ jobs:
           path: pokemon-showdown
 
       # Set up Node
-      - name: Use Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+
+      # Install mocha
+      - name: Install mocha
+        run: npm install -g mocha@10.2.0
 
       # Generate custom battle tests for Showdown 
       - name: Generate Showdown Custom Tests
