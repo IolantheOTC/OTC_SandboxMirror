@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+# Action to test that listed tour codes can be parsed by Showdown
 
 name: CI
 
@@ -47,9 +47,9 @@ jobs:
       # Inject custom battle test into Showdown
       - name: Inject Showdown Custom Tests
         run: |
-          echo Creating custom tests...
+          echo Injecting custom tests...
           cp $GITHUB_WORKSPACE/test/operationtourcode.js /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown/test/sim/misc/operationtourcode.js
-          echo Finished creating custom tests
+          echo Finished injecting custom tests
 
       # Execute custom battle tests
       - name: Run Showdown Custom Tests

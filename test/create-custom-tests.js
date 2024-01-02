@@ -1,4 +1,4 @@
-console.log("Creating custom tests...");
+console.log("Generating custom tests...");
 
 const OTC = require('./api/otc_api.js');
 const fs = require('fs');
@@ -130,4 +130,4 @@ process.chdir('./../test');
 const sCompleteGeneratedCode = sTemplateOuter.replace('#REPLACE', sGeneratedCodeInner);
 fs.writeFileSync('./operationtourcode.js', sCompleteGeneratedCode);
 
-console.log("Finished custom tests...");
+console.log("Finished generating custom tests...");
