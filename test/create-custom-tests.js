@@ -3,7 +3,7 @@ console.log("Creating custom tests...");
 const OTC = require('./api/otc_api.js');
 const fs = require('fs');
 
-const sTourNameList = fs.readFileSync('../metadata/list.txt', {encoding: 'utf8'});
+const sTourNameList = fs.readFileSync('./../metadata/list.txt', {encoding: 'utf8'});
 const sTourNameArray = sTourNameList.split('\n');
 
 const sTemplateOuter = fs.readFileSync('./otc-test-template-outer.txt', {encoding: 'utf8'});
@@ -11,7 +11,7 @@ const sTemplateInner = fs.readFileSync('./otc-test-template-inner.txt', {encodin
 
 var sGeneratedCodeInner = '';
 
-process.chdir('../formats');
+process.chdir('./../formats');
 fs.readdirSync('./').forEach(sFilename => {
     const sTourName = sFilename.replace(OTC.TourExt, '');
     if(!sTourNameArray.includes(sTourName)) return;
@@ -126,7 +126,7 @@ fs.readdirSync('./').forEach(sFilename => {
 });
 
 // Generate source code that can run in Showdown's CI system
-process.chdir('../test');
+process.chdir('./../test');
 const sCompleteGeneratedCode = sTemplateOuter.replace('#REPLACE', sGeneratedCodeInner);
 fs.writeFileSync('./operationtourcode.js', sCompleteGeneratedCode);
 
