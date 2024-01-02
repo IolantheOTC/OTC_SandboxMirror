@@ -42,6 +42,7 @@ jobs:
       # Generate custom battle tests for Showdown 
       - name: Generate Showdown Custom Tests
         run: node $GITHUB_WORKSPACE/test/create-custom-tests.js
+        working-directory: test
 
       # Inject custom battle test into Showdown
       - name: Inject Showdown Custom Tests
