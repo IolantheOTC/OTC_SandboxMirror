@@ -1,0 +1,8 @@
+'use strict';
+
+const assert = require('assert').strict;
+const AssertionError = assert.AssertionError;
+
+describe(`OperationTourCode`, function () {
+	#REPLACE
+});

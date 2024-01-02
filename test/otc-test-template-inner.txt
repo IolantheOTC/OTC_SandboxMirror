@@ -1,0 +1,13 @@
+	it('#REPLACE_TITLE should pass the custom format validator', function () {
+		try {
+			const tryFormat = Dex.formats.validate(
+				#REPLACE_CODE
+			);
+			const format = Dex.formats.get(tryFormat, true);
+		} catch (err) {
+			throw new AssertionError({
+				message: "Expected custom format to be valid, but it failed validator:\n" + err,
+				stackStartFunction: assert.legalFormat,
+			});
+		}
+	});

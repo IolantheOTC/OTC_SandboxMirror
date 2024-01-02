@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+# Action to test that listed tour codes can be parsed by Showdown
 
 name: CI
 
@@ -34,29 +34,28 @@ jobs:
           path: pokemon-showdown
 
       # Set up Node
-      - name: Use Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
 
-      # Customize Showdown instance so any user can run tours
-      - name: Customize Showdown
-        working-directory: /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown/server
-        run: |
-          sed -i 's/hasSysopAccess() {/hasSysopAccess() { return true;/' users.ts
-          cat users.ts
+      # Generate custom battle tests for Showdown 
+      - name: Generate Showdown Custom Tests
+        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js
+        working-directory: test
 
-      # Run Showdown
-      - name: Run Showdown
-        run: node pokemon-showdown 8000
+      # Inject custom battle test into Showdown
+      - name: Inject Showdown Custom Tests
+        run: |
+          echo Injecting custom tests...
+          cp $GITHUB_WORKSPACE/test/operationtourcode.js /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown/test/sim/misc/operationtourcode.js
+          echo Finished injecting custom tests
+
+      # Install mocha
+      - name: Install mocha
+        run: npm install -g mocha@10.2.0
+
+      # Execute custom battle tests
+      - name: Run Showdown Custom Tests
+        run: npx mocha -g "OperationTourCode"
         working-directory: /home/runner/work/OTC_SandboxMirror/OTC_SandboxMirror/pokemon-showdown
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
