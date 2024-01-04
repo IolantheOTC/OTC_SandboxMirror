@@ -27,9 +27,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+        env:
+          ALL_CHANGED_TOUR_FILES: ''
 
       # Get and list changed .tour files
-      - name: Get all changed tour files
+      - name: Get all changed tour files for PR
         id: changed-tour-files
         if: github.event_name == 'pull_request'
         uses: tj-actions/changed-files@v41
@@ -37,7 +39,7 @@ jobs:
           files: |
               formats/**.tour
 
-      - name: List all changed tour files
+      - name: List all changed tour files for PR
         if: steps.changed-tour-files.outputs.any_changed == 'true'
         env:
           ALL_CHANGED_TOUR_FILES: ${{ steps.changed-tour-files.outputs.all_changed_files }}
@@ -63,7 +65,7 @@ jobs:
 
       # Generate custom battle tests for Showdown 
       - name: Generate Showdown Custom Tests
-        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js
+        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js allChangedTourFiles=${{ env.ALL_CHANGED_TOUR_FILES }}
         working-directory: test
 
       # Inject custom battle test into Showdown
