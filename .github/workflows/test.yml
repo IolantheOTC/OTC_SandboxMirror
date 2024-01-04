@@ -45,6 +45,8 @@ jobs:
           ALL_CHANGED_TOUR_FILES: ${{ steps.changed-tour-files.outputs.all_changed_files }}
         run: |
           echo "Changed tour files: $ALL_CHANGED_TOUR_FILES"
+          touch .env
+          echo ALL_CHANGED_TOUR_FILES=$ALL_CHANGED_TOUR_FILES >> .env
 
       # Checkout Showdown
       - name: Checkout Pokemon Showdown
@@ -65,7 +67,7 @@ jobs:
 
       # Generate custom battle tests for Showdown 
       - name: Generate Showdown Custom Tests
-        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js allChangedTourFiles=$ALL_CHANGED_TOUR_FILES
+        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js allChangedTourFiles=${{ env.ALL_CHANGED_TOUR_FILES }}
         working-directory: test
 
       # Inject custom battle test into Showdown

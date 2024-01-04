@@ -13,6 +13,8 @@ const OTC = require('./api/otc_api.js');
 var allChangedTourFiles = process.argv[2];
 console.log(`allChangedTourFiles: ${allChangedTourFiles}`);
 
+console.log(`ALL_CHANGED_TOUR_FILES: ${process.env.ALL_CHANGED_TOUR_FILES}`);
+
 let targetTourNameArray = null;
 if(allChangedTourFiles) {
     allChangedTourFiles = allChangedTourFiles.replace('allChangedTourFiles=', '');
