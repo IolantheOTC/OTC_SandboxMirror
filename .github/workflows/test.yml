@@ -25,6 +25,25 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout OTC
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Get and list changed .tour files
+      - name: Get all changed tour files
+        id: changed-tour-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+              formats/**.tour
+
+      - name: List all changed tour files
+        if: steps.changed-tour-files.outputs.any_changed == 'true'
+        env:
+          ALL_CHANGED_TOUR_FILES: ${{ steps.changed-tour-files.outputs.all_changed_files }}
+        run: |
+          for file in "$ALL_CHANGED_TOUR_FILES"; do
+            echo "$file was changed"
+          done
 
       # Checkout Showdown
       - name: Checkout Pokemon Showdown
