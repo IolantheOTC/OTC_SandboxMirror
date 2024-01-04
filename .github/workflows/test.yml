@@ -47,6 +47,7 @@ jobs:
           echo "Changed tour files: $ALL_CHANGED_TOUR_FILES"
           touch .env
           echo ALL_CHANGED_TOUR_FILES=$ALL_CHANGED_TOUR_FILES >> .env
+          node $GITHUB_WORKSPACE/test/create-custom-tests.js
 
       # Checkout Showdown
       - name: Checkout Pokemon Showdown
