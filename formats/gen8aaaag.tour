@@ -1,4 +1,4 @@
 /tour create [Gen 8] Anything Goes, Elimination,,,[Gen 8] Any Ability Anything Goes
-/tour rules !Obtainable Abilities, Ability Clause = 2, -Pikachu
+/tour rules !Obtainable Abilities, Ability Clause = 2
 /tour autostart 10
 /tour autodq 6
