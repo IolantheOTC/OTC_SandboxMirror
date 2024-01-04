@@ -31,6 +31,7 @@ jobs:
       # Get and list changed .tour files
       - name: Get all changed tour files
         id: changed-tour-files
+        if: github.event_name == 'pull_request'
         uses: tj-actions/changed-files@v41
         with:
           files: |
@@ -41,9 +42,7 @@ jobs:
         env:
           ALL_CHANGED_TOUR_FILES: ${{ steps.changed-tour-files.outputs.all_changed_files }}
         run: |
-          for file in "$ALL_CHANGED_TOUR_FILES"; do
-            echo "$file was changed"
-          done
+          echo "Changed tour files: $ALL_CHANGED_TOUR_FILES"
 
       # Checkout Showdown
       - name: Checkout Pokemon Showdown
