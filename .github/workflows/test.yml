@@ -39,16 +39,6 @@ jobs:
           files: |
               formats/**.tour
 
-      - name: List all changed tour files for PR
-        if: steps.changed-tour-files.outputs.any_changed == 'true'
-        env:
-          ALL_CHANGED_TOUR_FILES: ${{ steps.changed-tour-files.outputs.all_changed_files }}
-        run: |
-          echo "Changed tour files: $ALL_CHANGED_TOUR_FILES"
-          touch .env
-          echo ALL_CHANGED_TOUR_FILES=$ALL_CHANGED_TOUR_FILES >> .env
-          node $GITHUB_WORKSPACE/test/create-custom-tests.js
-
       # Checkout Showdown
       - name: Checkout Pokemon Showdown
         uses: actions/checkout@v3
@@ -66,9 +56,22 @@ jobs:
       - name: Install actions/core
         run: npm install @actions/core
 
-      # Generate custom battle tests for Showdown 
-      - name: Generate Showdown Custom Tests
-        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js allChangedTourFiles=${{ env.ALL_CHANGED_TOUR_FILES }}
+      # Generate custom battle tests for Showdown (PR tours only)
+      - name:  Generate Showdown Custom Tests (PR Tours)
+        if: steps.changed-tour-files.outputs.any_changed == 'true'
+        env:
+          ALL_CHANGED_TOUR_FILES: ${{ steps.changed-tour-files.outputs.all_changed_files }}
+        run: |
+          echo "Changed tour files: $ALL_CHANGED_TOUR_FILES"
+          touch .env
+          echo ALL_CHANGED_TOUR_FILES=$ALL_CHANGED_TOUR_FILES >> .env
+          node $GITHUB_WORKSPACE/test/create-custom-tests.js
+        working-directory: test
+
+      # Generate custom battle tests for Showdown (all listed tours)
+      - name: Generate Showdown Custom Tests (Listed Tours)
+        if: steps.changed-tour-files.outputs.any_changed != 'true'
+        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js
         working-directory: test
 
       # Inject custom battle test into Showdown

@@ -10,10 +10,12 @@ const fs = require('fs');
 const OTC = require('./api/otc_api.js');
 
 // Get list of specific changed tour files (for PR)
-var allChangedTourFiles = process.argv[2];
+var allChangedTourFiles = process.env.ALL_CHANGED_TOUR_FILES;
+if (!allChangedTourFiles) { // Fallback to command-line
+    console.log(`(Param fell back to command line...)`);
+    allChangedTourFiles = process.argv[2];
+}
 console.log(`allChangedTourFiles: ${allChangedTourFiles}`);
-
-console.log(`ALL_CHANGED_TOUR_FILES: ${process.env.ALL_CHANGED_TOUR_FILES}`);
 
 let targetTourNameArray = null;
 if(allChangedTourFiles) {
