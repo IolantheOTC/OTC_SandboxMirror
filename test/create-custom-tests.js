@@ -10,14 +10,17 @@ const fs = require('fs');
 const OTC = require('./api/otc_api.js');
 
 // Get list of specific changed tour files (for PR)
-const allChangedTourFiles = process.argv[2];
+var allChangedTourFiles = process.argv[2];
 console.log(`allChangedTourFiles: ${allChangedTourFiles}`);
 
 let targetTourNameArray = null;
-if(allChangedTourFiles && ('' !== allChangedTourFiles)) {
-    targetTourNameArray = allChangedTourFiles.replace('allChangedTourFiles=', '').split(' '); // GitHub action list splits on space
-    for(var nTourItr = 0; nTourItr < targetTourNameArray.length; ++nTourItr) {
-        targetTourNameArray[nTourItr] = targetTourNameArray[nTourItr].replace('formats/', '').replace(OTC.TourExt, '');
+if(allChangedTourFiles) {
+    allChangedTourFiles = allChangedTourFiles.replace('allChangedTourFiles=', '');
+    if('' !== allChangedTourFiles) {
+        targetTourNameArray = allChangedTourFiles.split(' '); // GitHub action list splits on space
+        for(var nTourItr = 0; nTourItr < targetTourNameArray.length; ++nTourItr) {
+            targetTourNameArray[nTourItr] = targetTourNameArray[nTourItr].replace('formats/', '').replace(OTC.TourExt, '');
+        }
     }
 }
 
