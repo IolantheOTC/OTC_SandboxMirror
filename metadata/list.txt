@@ -1,7 +1,6 @@
 gen5randbtas
 gen5stabaaa
 gen6randbtas
-gen7convergepoke
 gen7randbtas
 gen7stabaaa
 gen8aaa
@@ -121,6 +120,7 @@ gen9chaos1v1
 gen9chimerarandbats24
 gen9csflippedaaa
 gen9csstab
+gen9ffstab
 gen9ffubers
 gen9fortereevochaos
 gen9fortestabaaa

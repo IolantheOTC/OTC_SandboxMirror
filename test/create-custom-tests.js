@@ -1,7 +1,32 @@
 console.log("Generating custom tests...");
 
-const OTC = require('./api/otc_api.js');
+let core = null;
+try {
+    core = require('@actions/core');
+} catch {
+    console.log(`@actions/core was unavailable!`);
+}
 const fs = require('fs');
+const OTC = require('./api/otc_api.js');
+
+// Get list of specific changed tour files (for PR)
+var allChangedTourFiles = process.env.ALL_CHANGED_TOUR_FILES;
+if (!allChangedTourFiles) { // Fallback to command-line
+    console.log(`(Param fell back to command line...)`);
+    allChangedTourFiles = process.argv[2];
+}
+console.log(`allChangedTourFiles: ${allChangedTourFiles}`);
+
+let targetTourNameArray = null;
+if(allChangedTourFiles) {
+    allChangedTourFiles = allChangedTourFiles.replace('allChangedTourFiles=', '');
+    if('' !== allChangedTourFiles) {
+        targetTourNameArray = allChangedTourFiles.split(' '); // GitHub action list splits on space
+        for(var nTourItr = 0; nTourItr < targetTourNameArray.length; ++nTourItr) {
+            targetTourNameArray[nTourItr] = targetTourNameArray[nTourItr].replace('formats/', '').replace(OTC.TourExt, '');
+        }
+    }
+}
 
 const sTourNameList = fs.readFileSync('./../metadata/list.txt', {encoding: 'utf8'});
 const sTourNameArray = sTourNameList.split('\n');
@@ -16,7 +41,11 @@ fs.readdirSync('./').forEach(sFilename => {
     const sTourName = sFilename.replace(OTC.TourExt, '');
     if(!sTourNameArray.includes(sTourName)) return;
 
-    console.log(`Listed sFilename: ${sFilename}`);
+    if(targetTourNameArray) {
+        if(!targetTourNameArray.includes(sTourName)) return;
+    }
+
+    console.log(`Listed and tested sFilename: ${sFilename}`);
 
     const sTourCode = fs.readFileSync('./' + sFilename, {encoding: 'utf8'});
     //console.log(`sTourCode: ${sTourCode}`);
@@ -77,7 +106,13 @@ fs.readdirSync('./').forEach(sFilename => {
     }
 
     if(bParseError) {
-        console.log(`CHALLENGE CODE PARSE ERROR: ${output} (${sFilename})`);
+        const sError = `${sFilename} triggered challenge code parse error: ${output}`;
+        if (core) {
+            core.setFailed(sError);
+        }
+        else {
+            console.log(`Non-core fallback error: ${sError}`);
+        }
     }
     else {
         var sPostNewText;

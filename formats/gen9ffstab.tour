@@ -1,0 +1,4 @@
+/tour new [Gen 9] STABmons, Elimination,,,[Gen 9] STABmons Frantic Fusions
+/tour rules Frantic Fusions Mod, +Azumarill , *Rage Fist, *Surging Strikes, -Great Tusk, -Gholdengo, -Toxapex, -Numel, -Ditto, -Hoopa Unbound, -Persian Alola, -Huge Power, -Magnet Pull, -Illusion, -Pure Power, -Shadow Tag, -Stakeout, -Stench, -Poison Heal, -Ice Scales, -Unburden, -Heat Rock, -Quick Claw
+/tour autostart 10
+/tour autodq 7

@@ -1,4 +1,4 @@
-/starttour [Gen 8] Ubers, Elimination,,,[Gen 8] ABC Ubers
+/tour new [Gen 8] Ubers, Elimination,,,[Gen 8] ABC Ubers
 /tour rules Alphabet Cup Move Legality, *Geomancy, *Lovely Kiss, *Shell Smash
 /tour autostart 10
 /tour autodq 6
