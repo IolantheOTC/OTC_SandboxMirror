@@ -65,7 +65,7 @@ jobs:
 
       # Generate custom battle tests for Showdown 
       - name: Generate Showdown Custom Tests
-        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js allChangedTourFiles=${{ env.ALL_CHANGED_TOUR_FILES }}
+        run: node $GITHUB_WORKSPACE/test/create-custom-tests.js allChangedTourFiles=$ALL_CHANGED_TOUR_FILES
         working-directory: test
 
       # Inject custom battle test into Showdown
