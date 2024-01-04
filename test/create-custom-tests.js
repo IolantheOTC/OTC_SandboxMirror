@@ -1,7 +1,8 @@
 console.log("Generating custom tests...");
 
-const OTC = require('./api/otc_api.js');
+const core = require('@actions/core');
 const fs = require('fs');
+const OTC = require('./api/otc_api.js');
 
 const sTourNameList = fs.readFileSync('./../metadata/list.txt', {encoding: 'utf8'});
 const sTourNameArray = sTourNameList.split('\n');
@@ -77,7 +78,7 @@ fs.readdirSync('./').forEach(sFilename => {
     }
 
     if(bParseError) {
-        console.log(`CHALLENGE CODE PARSE ERROR: ${output} (${sFilename})`);
+        core.setFailed(`${sFilename} triggered challenge code parse error: ${output}`);
     }
     else {
         var sPostNewText;
