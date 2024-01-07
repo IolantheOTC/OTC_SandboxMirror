@@ -1,5 +1,5 @@
 /tour new [Gen 9] Mix and Mega, Elimination,,,[Gen 9] STABmons n Mega
-/tour rules STABmons Move Legality, +Gholdengo, +Kilowattrel, +Urshifu-Rapid-Strike, +Zapdos,*Meloetta, *Ursaluna-Base, *Ursaluna-Blood-Moon, *Walking Wake, *Zoroark-Hisui, -Arceus, -Enamorus-Base, -Komala, -King's Rock, *Acupressure, *Astral Barrage, *Belly Drum,*Blood Moon,*Boomburst, *Clangorous Soul, *Dire Claw, *Extreme Speed, *Fillet Away,*Gigaton Hammer, *Last Respects, *No Retreat,*Power Trip, *Revival Blessing, *Shed Tail, *Shell Smash, *Shift Gear, *Triple Arrows, *V-create, *Victory Dance, *Wicked Blow
-/tour autostart 7
-/tour autodq 4
+/tour rules STABmons Move Legality, +Rusted Sword, *Acupressure, *Astral Barrage, *Belly Drum, *Dire Claw, *Extreme Speed, *Fillet Away, *Last Respects, *No Retreat, *Revival Blessing, *Shed Tail, *Shell Smash, *Shift Gear, *V-create, *Victory Dance, *Wicked Blow, *Dragapult, -Komala, -King's Rock, +Zacian-Crowned, -Zacian, +Kilowattrel, +Zapdos, +Urshifu-Rapid-Strike, +Gholdengo, *Koraidon, +Koraidon, -Arceus, *Zoroark-Hisui, -Pikachu
+/tour autostart 10
+/tour autodq 6
 /wall Hub link: https://www.smogon.com/forums/threads/om-mashup-megathread.3711916/#post-9422888
